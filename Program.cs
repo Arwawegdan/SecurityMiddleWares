@@ -1,3 +1,5 @@
+using SecurityMiddleWares;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -15,6 +17,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseMiddleware<BlockPostmanCallsMiddleware>();
 
 app.MapControllers();
 
