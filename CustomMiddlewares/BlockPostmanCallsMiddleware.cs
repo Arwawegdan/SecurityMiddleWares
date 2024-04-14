@@ -1,10 +1,7 @@
 ﻿namespace SecurityMiddleWares;
 
-public class BlockPostmanCallsMiddleware
+public class BlockPostmanCallsMiddleware(RequestDelegate _next)
 {
-    private readonly RequestDelegate _next;
-    public BlockPostmanCallsMiddleware(RequestDelegate next) => _next = next;
-
     public async Task Invoke(HttpContext context)
     {
         if (IsRequestFromPostman(context.Request))
